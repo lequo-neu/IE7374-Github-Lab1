@@ -4,13 +4,6 @@ on:
   push:
     branches:
       - main
-      - 'releases/**'
-    branches-ignore:
-      - dev
-  issues:
-    types:
-      - opened
-      - labeled
 
 jobs:
   build:
