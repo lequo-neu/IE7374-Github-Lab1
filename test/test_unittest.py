@@ -5,7 +5,7 @@ import unittest
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(project_root)
 
-from src import calculator
+from src import calculator  # noqa: E402
 
 
 class TestCalculator(unittest.TestCase):

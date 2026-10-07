@@ -1,5 +1,5 @@
 # src/calculator.py
-# IE7374 Lab 1 — Modified version
+# IE7374 Lab 1 - Modified version
 # Original: generic arithmetic (add, subtract, multiply, sum-of-3)
 # Modified: drug shortage supply-chain calculations
 
@@ -15,8 +15,7 @@ def fun1(daily_usage, lead_time_days):
     Raises:
         ValueError: If inputs are not numbers.
     """
-    if not (isinstance(daily_usage, (int, float)) and
-            isinstance(lead_time_days, (int, float))):
+    if not (isinstance(daily_usage, (int, float)) and isinstance(lead_time_days, (int, float))):
         raise ValueError("Both inputs must be numbers.")
     return daily_usage * lead_time_days
 
@@ -32,8 +31,7 @@ def fun2(stock_on_hand, safety_stock):
     Raises:
         ValueError: If inputs are not numbers.
     """
-    if not (isinstance(stock_on_hand, (int, float)) and
-            isinstance(safety_stock, (int, float))):
+    if not (isinstance(stock_on_hand, (int, float)) and isinstance(safety_stock, (int, float))):
         raise ValueError("Both inputs must be numbers.")
     return stock_on_hand - safety_stock
 
@@ -49,8 +47,7 @@ def fun3(daily_usage, horizon_days):
     Raises:
         ValueError: If inputs are not numbers.
     """
-    if not (isinstance(daily_usage, (int, float)) and
-            isinstance(horizon_days, (int, float))):
+    if not (isinstance(daily_usage, (int, float)) and isinstance(horizon_days, (int, float))):
         raise ValueError("Both inputs must be numbers.")
     return daily_usage * horizon_days
 
