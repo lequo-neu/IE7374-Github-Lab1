@@ -24,6 +24,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Audit dependencies for known vulnerabilities
+        run: |
+          pip-audit -r requirements.txt --format=columns
+        continue-on-error: false
+
       - name: Lint with flake8
         run: flake8 src/ test/ --max-line-length=100 --ignore=E203,W503
         continue-on-error: false
@@ -48,8 +53,8 @@ jobs:
 
       - name: Notify on success
         if: success()
-        run: echo "All checks passed. Lint clean, tests passed, coverage report generated."
+        run: echo "All checks passed. No vulnerabilities, lint clean, tests passed, coverage report generated."
 
       - name: Notify on failure
         if: failure()
-        run: echo "Pipeline failed. Check lint errors or test failures above."
+        run: echo "Pipeline failed. Check the audit, lint, or test output above."
