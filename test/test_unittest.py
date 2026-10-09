@@ -15,24 +15,39 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(calculator.fun1(0, 5), 0)
         self.assertEqual(calculator.fun1(5.5, 2), 11.0)
         self.assertEqual(calculator.fun1(100, 1), 100)
+        self.assertEqual(calculator.fun1(0, 0), 0)
+        self.assertEqual(calculator.fun1(0.5, 4), 2.0)
 
     def test_fun2(self):
         self.assertEqual(calculator.fun2(50, 30), 20)
         self.assertEqual(calculator.fun2(30, 30), 0)
         self.assertEqual(calculator.fun2(10, 30), -20)
         self.assertEqual(calculator.fun2(0, 0), 0)
+        self.assertEqual(calculator.fun2(0, 10), -10)
+        self.assertEqual(calculator.fun2(100, 0), 100)
 
     def test_fun3(self):
         self.assertEqual(calculator.fun3(10, 7), 70)
         self.assertEqual(calculator.fun3(0, 30), 0)
         self.assertEqual(calculator.fun3(5, 14), 70)
         self.assertEqual(calculator.fun3(2.5, 4), 10.0)
+        self.assertEqual(calculator.fun3(0, 0), 0)
+        self.assertEqual(calculator.fun3(1, 100), 100)
 
     def test_fun4(self):
         self.assertEqual(calculator.fun4(30, 20, 70), 120)
         self.assertEqual(calculator.fun4(0, 0, 0), 0)
         self.assertEqual(calculator.fun4(10, -5, 50), 55)
         self.assertEqual(calculator.fun4(15, 5, 30), 50)
+        self.assertEqual(calculator.fun4(0, -10, 0), -10)
+        self.assertEqual(calculator.fun4(100, 0, 0), 100)
+
+    def test_rejects_non_numeric_input(self):
+        for func in (calculator.fun1, calculator.fun2, calculator.fun3):
+            for bad_args in [("10", 3), (10, None), ([1], 2)]:
+                with self.subTest(func=func.__name__, args=bad_args):
+                    with self.assertRaises(ValueError):
+                        func(*bad_args)
 
 
 if __name__ == '__main__':
